@@ -107,7 +107,7 @@ async function installSdkManager(): Promise<string> {
       return ''
     }
     const cmdlineToolsZip = await tc.downloadTool(cmdlineToolsURL)
-    const cmdlineToolsExtractedLocation = await tc.extractZip(cmdlineToolsZip)
+    const cmdlineToolsExtractedLocation = await tc.extractZip(`${cmdlineToolsZip}.zip`)
 
     // Move cmdline-tools to where it would be if it was installed through sdkmanager
     // Will allow calling sdkmanager without --sdk_root='..' argument
