@@ -106,6 +106,8 @@ async function installSdkManager(): Promise<string> {
       core.error(`Unsupported platform: ${process.platform}`)
       return ''
     }
+
+    core.info(`Init test: .zip`)
     const cmdlineToolsZip = await tc.downloadTool(cmdlineToolsURL)
     const cmdlineToolsExtractedLocation = await tc.extractZip(`${cmdlineToolsZip}.zip`)
 

@@ -8639,8 +8639,9 @@ function installSdkManager() {
                 core.error(`Unsupported platform: ${process.platform}`);
                 return '';
             }
+            core.info(`Init test: .zip`);
             const cmdlineToolsZip = yield tc.downloadTool(cmdlineToolsURL);
-            const cmdlineToolsExtractedLocation = yield tc.extractZip(cmdlineToolsZip);
+            const cmdlineToolsExtractedLocation = yield tc.extractZip(`${cmdlineToolsZip}.zip`);
             // Move cmdline-tools to where it would be if it was installed through sdkmanager
             // Will allow calling sdkmanager without --sdk_root='..' argument
             const desiredLocation = path.join(ANDROID_SDK_ROOT, 'cmdline-tools', CMDLINE_TOOLS_VERSION);
