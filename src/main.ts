@@ -108,7 +108,10 @@ async function installSdkManager(): Promise<string> {
     }
 
     core.info(`Init test: .zip on new dep`)
-    const cmdlineToolsZip = await tc.downloadTool(cmdlineToolsURL)
+    const tempDirectory = process.env['RUNNER_TEMP'] || '';
+    let pathZip = path.join(tempDirectory, "commandlinetools.zip");
+    core.info(`Paths ${tempDirectory} - ${pathZip}`)
+    const cmdlineToolsZip = await tc.downloadTool(cmdlineToolsURL, pathZip)
     const cmdlineToolsExtractedLocation = await tc.extractZip(`${cmdlineToolsZip}`)
 
     // Move cmdline-tools to where it would be if it was installed through sdkmanager
